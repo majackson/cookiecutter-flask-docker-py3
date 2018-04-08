@@ -1,0 +1,7 @@
+flask==0.12.2
+uWSGI==2.0.15
+zappa==0.45.1
+Jinja2==2.9.6
+flask-restful==0.3.6
+Flask-S3==0.3.3
+Werkzeug==0.12

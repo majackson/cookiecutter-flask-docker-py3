@@ -1,0 +1,16 @@
+{% raw %}
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <link rel="stylesheet" href="{{ config.STATIC_PREFIX }}css/bootstrap.min.css" type="text/css" />
+    {% block extracss %}{% endblock %}
+
+    <script type="text/javascript" src="{{ config.STATIC_PREFIX }}js/base.js"></script>
+    {% block extrajs %}{% endblock %}
+</head>
+<body>
+{% block body %}
+{% endblock %}
+</body>
+</html>
+{% endraw %}

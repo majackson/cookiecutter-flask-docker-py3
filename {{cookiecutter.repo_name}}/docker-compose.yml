@@ -1,0 +1,26 @@
+version: '2'
+services:
+    app:
+        container_name: {{cookiecutter.repo_name}}_app
+        build: .
+        command: bash -c "source ~/.venvs/{{cookiecutter.repo_name}}venv/bin/activate && uwsgi --http :8000 --module {{cookiecutter.repo_name}}.run --socket :8001" 
+        env_file:
+            - production.env
+        environment:
+            - PYTHONUNBUFFERED=1
+            - PRODUCTION
+        volumes:
+            - .:/code
+        ports:
+            - "8000:8000"
+            - "8001:8001"
+
+    server:
+        container_name: {{cookiecutter.repo_name}}_server
+        build: .dockerfiles/nginx
+        ports:
+            - "80:80"
+        volumes:
+           - ./{{cookiecutter.repo_name}}/static:/static
+        depends_on:
+            - app
